@@ -42,5 +42,5 @@ $$
 ### 4. Scatter Matrix : 
 
 covariance matrix的估计。(有时候covariance matrix  很难去计算)， 同样应用在high dimension reduction. 
-![markdown](./img/scatter_matrix.png)
+![markdown](/assets/images/scatter_matrix.png)
 
