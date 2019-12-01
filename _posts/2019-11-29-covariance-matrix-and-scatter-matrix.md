@@ -15,10 +15,32 @@ keywords: "dummy content, statistic, matrix, covariance"
 $$
 \operatorname{Cov}(X, Y)=E\left[\left(X-\mu_{x}\right)\left(Y-\mu_{y}\right)\right]
 $$
+
+
+
+$$
+\begin{aligned} \operatorname{Cov}(X, Y)=& E\{[X-E(X)][Y-E(Y)]\}=E(X Y)-E(X) E(Y) \\ & \operatorname{hit} p: \operatorname{Cov}(X, Y)=\frac{1}{n-1} \sum_{i=1}^{n}(X-\bar{X})(Y-\bar{Y}) \end{aligned}
+$$
+
+
+Take:
+1. Covariance Matrix always a symmetric and **semi-definite matrix** , main diagonal is the variance of each variance
+2. definition classification:
+a. covariance: describe two variables
+b. covariance matrix: describe the whole variance of different dimensions. 
+c. variance: one dimension. 
+
+3. [物理意义 For 2D](https://blog.csdn.net/guyuealian/article/details/68922981) 特征值分解就是其分布方向
+
+
+
+
 相关系数: 
 $$
 \rho=\frac{\operatorname{Cov}(X, Y)}{\sigma_{X} \sigma_{Y}}
 $$
+
+
 
 翻译一下：就是用X、Y的协方差除以X的标准差和Y的标准差。
 
@@ -43,4 +65,12 @@ $$
 
 covariance matrix的估计。(有时候covariance matrix  很难去计算)， 同样应用在high dimension reduction. 
 ![markdown](/assets/images/scatter_matrix.png)
+n 组数据，每组k个feature， 可以理解为: monitor n time point, each time we record k features. 
+
+
+### 两者关系:
+散布矩阵（散度矩阵）前乘以系数1/(n-1)就可以得到协方差矩阵了。
+$$
+散度矩阵=类内离散度矩阵=类内离差阵=协方差矩阵 \times（n-1）
+$$
 
