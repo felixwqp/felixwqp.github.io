@@ -81,3 +81,36 @@ $$
 w_{i k}=\frac{t f_{i k} \log \left(N / n_{k}\right)}{\sqrt{\sum_{k=1}^{l}\left(t f_{i k}\right)^{2}\left[\log \left(N / n_{k}\right)\right]^{2}}}
 $$
 
+
+similarity: cosine
+
+### Assessing Quality
+
+1. precision/recal curve(return or not)
+2. kendall's Tau(total order right or not )
+3. Mean reciprocal Rank (top hit)
+
+
+True/false:  relevent or irrelevent. 
+
+posisitive/negative:  returned or not. 
+
+
+$$
+\begin{array}{|l|l|l|}\hline & {\text { Relevant }} & {\text { Not Relevant }} \\ \hline \text { Retrieved } & {\text { TP }} & {F P} \\ \hline \text { Not retrieved } & {F N} & {T N} \\ \hline\end{array}
+$$
+
+Precision and recall: whether its there or not. (tradeoff)
+
+
+###### Kendall's Tau
+1. order of all results. 
+whether its in right order. 
+
+1 - perfect agree
+-1 perfect not agree. 
+
+0 irrelevent. 
+
+
+###### mean reciprocal rank
