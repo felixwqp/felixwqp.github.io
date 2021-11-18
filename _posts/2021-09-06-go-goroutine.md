@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[A]"
+title: "[Golang] Coroutine"
 description: "new jounery to go"
 comments: true
 keywords: "go, programming language"
