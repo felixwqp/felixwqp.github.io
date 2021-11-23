@@ -109,3 +109,9 @@ vector 会在元素类型没有提供保证不抛异常的移动构造函数的�
 4. An exception enables a clean separation between the code that detects the error and the code that handles the error.
 
 
+
+exception v.s. std::optional
+
+exception: have error msg,
+
+std::optional
