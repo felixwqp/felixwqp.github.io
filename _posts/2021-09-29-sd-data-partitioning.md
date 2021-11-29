@@ -41,8 +41,13 @@ Cons:
 Lookup service: to find out where a particular data entity resides,
 This means the **GetDatabaseFor()** method actually
 hits a web service or a database that stores/returns the mapping between each entity key and the database server it resides on.
-[Entity Key -> Database Server]
+: [Entity Key -> Database Server]
 
  This **loosely coupled approach** means you can perform tasks like adding servers to the database pool
 or change your partitioning scheme without having to impact your application.
 
+
+## Partitioning Criteria
+
+a. Key or Hash-based Partitioning: 
+problem: rehash is problematic, as the hash function may change when server added. 
