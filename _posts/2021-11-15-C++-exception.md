@@ -95,6 +95,13 @@ typedef int (*pf)() throw(int); // Error: typedef declaration
 ```
 
 
+Yes, throwing an exception from the failed constructor is the standard way of doing this
+no exception from destructor, has to be 
+
+
+no throw for destructor: 
+ The C++ rule is that you must never throw an exception from a destructor that is being called during the "stack unwinding" process of another exception. For example, if someone says throw Foo(), the stack will be unwound so all the stack frames between the throw Foo() and the } catch (Foo e) { will get popped. This is called stack unwinding.
+
 
 
 
@@ -110,8 +117,85 @@ vector 会在元素类型没有提供保证不抛异常的移动构造函数的�
 
 
 
-exception v.s. std::optional
+exception v.s. std::optional: 
+- exception: have error msg, 
+- std::optional: lose error message, less overhead(no stack unwinding needed)
 
-exception: have error msg,
 
-std::optional
+error handling in c++:
+- error code
+- exception
+
+
+how to write exception for a class? 
+
+
+
+all exception should derived from ```std::exception```
+```C++
+#include <stdexcept>
+#include <limits>
+#include <iostream>
+
+using namespace std;
+
+void MyFunc(int c)
+{
+    if (c > numeric_limits< char> ::max())
+        throw invalid_argument("MyFunc argument too large.");
+    //...
+}
+
+int main()
+{
+    try
+    {
+        MyFunc(256); //cause an exception to throw
+    }
+
+    catch (invalid_argument& e)
+    {
+        cerr << e.what() << endl;
+        return -1;
+    }
+    //...
+    return 0;
+}
+```
+
+1. exception v.s. assert:
+Use asserts to check for errors that should never occur. Use exceptions to check for errors that might occur,
+2. Throw exceptions by value, catch them by reference. Don’t catch what you can't handle.
+3. Don't allow exceptions to escape from destructors or memory-deallocation functions.
+
+
+
+use shared_ptr to manage resource that can have exception
+1. RAII for handling
+2. some problem with shared point construction: https://stackoverflow.com/questions/20895648/difference-in-make-shared-and-normal-shared-ptr-in-c
+
+```C++
+void F(const std::shared_ptr<Lhs> &lhs, const std::shared_ptr<Rhs> &rhs) { /* ... */ }
+
+F(std::shared_ptr<Lhs>(new Lhs("foo")),
+  std::shared_ptr<Rhs>(new Rhs("bar")));
+
+```
+Because C++ allows arbitrary order of evaluation of subexpressions, one possible ordering is:
+```C++
+
+new Lhs("foo"))
+new Rhs("bar"))
+std::shared_ptr<Lhs>
+std::shared_ptr<Rhs>
+```
+> Now, suppose we get an exception thrown at step 2 (e.g., out of memory exception, Rhs constructor threw some exception). We then lose memory allocated at step 1, since nothing will have had a chance to clean it up. The core of the problem here is that the raw pointer didn't get passed to the std::shared_ptr constructor immediately.
+
+
+
+
+
+
+
+
+
