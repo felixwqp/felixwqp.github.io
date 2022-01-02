@@ -50,7 +50,7 @@ in the Linux kernel, context switching involves switching registers, stack point
 virtual address from different space can point to the same physical memory -> reduce data copy
 
 3.4 DMA: 
-![a](../assets/images/dma.png)
+![a](/assets/images/dma.png)
 1. user read() system call for IO, user blocking wait for return
 2. CPU get the system call -> request DMA to IO request
 3. by IO request, DMA request to disk
@@ -72,5 +72,5 @@ in this page, only look at how mmap + write works together
 void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
 ```
 mmap can map the buffer between user space and buffer in kernel space; 
-![](../assets/images/mmap_write.png)
+![](/assets/images/mmap_write.png)
 

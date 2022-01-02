@@ -21,7 +21,7 @@ partition(+ sort key)
 ### GSI(Global Secondary Index):
 naive approch: scan with filter expression; scalable impossible-> latency+cost
 index as GSI; no need to scan
-![](../assets/images/GSI_table_mechanism.png)
+![](/assets/images/GSI_table_mechanism.png)
 
 - GSI parition key requires uniform data distribution
 - throttling: define RCU/WCU (read/write capacity unit), 
@@ -34,7 +34,7 @@ index as GSI; no need to scan
 ### LSI(local secondary index)
 
 
-![ForumPost Table](../assets/images/LSI_table.png))
+![ForumPost Table](/assets/images/LSI_table.png))
 1. index within partition
 2. one sort key  in one table -> several property to lookup
 3. LSI -> a certain attribute;

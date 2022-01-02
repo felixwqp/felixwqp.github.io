@@ -106,16 +106,16 @@ more opt:
 ## OLAP 
 -> scan all table; how to improve the processing throughput. when fetching more than half of data, indexing is not that important. 
 
-![topo](../assets/images/ETL_datawarehouse.png)
+![topo](/assets/images/ETL_datawarehouse.png)
 
 ### data lake v.s. data warehouse
 - data warehouse well maintained, with indexewd; write by ETL(once a day), read-only from BA
-- data lake, more garbage, not well organized.
+- data lake, more garbage, not well organized.$$
 
 
 ### Schema:
 - in data warehous modelling, star schema(snowflake schema): fact(transaction) table and dimension(entity) table
-  ![star schame](../assets/images/star_schama.png)
+  ![star schame](/assets/images/star_schama.png)
 - fact table: 
   - contains: 1. all the primary keys of the dimension; 2. associated facts or measures(quantity sold, avg sales)
 - dimension table:
@@ -133,13 +133,13 @@ ref:
 4. HDFS, Hive is column storage DB
 5. compression methid: [What is Parquet?](https://databricks.com/glossary/what-is-parquet)
 
-![columnar storage layout](../assets/images/columnar_layout.png)
+![columnar storage layout](/assets/images/columnar_layout.png)
 
 ### Column Compression
 column values
 bitmap for each possible value
 run-length encoding
-![column compression](../assets/images/column_compression.png)
+![column compression](/assets/images/column_compression.png)
 ##### requirement:
 1. additional row, needs to rewrite everything. -> O(N) very complex -> less write
 
@@ -155,5 +155,5 @@ run-length encoding
    b. less query times, but each query demanding requires millions of records to be scanned in a short time
    c. compression: column-oriented storage
    d. bottleneck: disk bandwidth
-![comparison](../assets/images/OLTP_OLAP.png)
+![comparison](/assets/images/OLTP_OLAP.png)
 
