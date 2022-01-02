@@ -51,3 +51,27 @@ or change your partitioning scheme without having to impact your application.
 
 a. Key or Hash-based Partitioning: 
 problem: rehash is problematic, as the hash function may change when server added. 
+
+b. List partition:
+c. round-robin: 
+d. composite: combine all above ways to partition
+
+## Common Problem of data partitioning
+
+
+operation on diff table/row -> diff server
+a. Join and denormalization
+Join across server: solved by denormalization
+But by denormalization -> data inconsistency problem
+
+b. Referntial Integrity:
+Foreign key constraint, 
+Most RDBMS do not support foreign keys constraints across databases on different database servers.
+-> application code to enforce referntial integrity
+
+c. Rebalance: 
+
+
+## Indexing
+
+Example： A library Catalog
