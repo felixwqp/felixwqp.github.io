@@ -16,6 +16,10 @@ keywords: ""
 2. keep track of status of all resources while distributing request
 3. prevent single point failure
 
+Note: 
+Layer 7 Application traffic: has info from app layer -> by request type to the server
+
+
 
 #### application on 3 places: 
 
